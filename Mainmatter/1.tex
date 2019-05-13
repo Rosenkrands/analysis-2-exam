@@ -1,1 +1,167 @@
 % !TEX root = ../main.tex
+\subsection{ABC-kriteriet}
+\begin{boks}{Sætning 9.26 (ABC-kriteriet)}
+  Lad $D \subseteq \mathbb{R}^2$ og lad $f \ : \ D \rightarrow \mathbb{R}$ være en funktion. Antag, at $z_0 = (x_0, y_0) \in D$ er et kritisk punkt for $f$, dvs. $z_0$ ligger i det indre af $D$ og $\nabla f(z_0)$. Antag yderligere, at de partielt afledte af $f$ af anden orden eksisterer og er kontinuerte i en åben kugle $B_r (z_0)$. Sæt
+  \begin{align*}
+    A = \frac{\partial^2 f}{\partial x^2}(z_0), \quad B = \frac{\partial^2 f}{\partial x \partial y}(z_0), \quad C = \frac{\partial^2 f}{\partial y^2}(z_0).
+  \end{align*}
+  \begin{enumerate}
+    \item Hvis $B^2 > AC$, har $f$ et saddelpunkt i $z_0$, og
+    \item hvis $B^2 < AC$, har $f$ et strengt lokalt ekstremum i $z_0$.
+
+    Det lokale ekstremum i (b) er et strengt lokalt minimum, hvis $A > 0$ og $C > 0$, og det er et strengt lokalt maksimum, hvis $A < 0$ og $C < 0$ ($A$ og $C$ har samme fortegn, fordi $AC > 0$).
+    \item Hvis $B^2 = AC$, giver $ABC$-kriteriet ingen oplysning om $f$'s opførsel i nærheden af $z_0$.
+  \end{enumerate}
+\end{boks}
+\begin{proof}
+  (i) Vi skal bevise resultaterne ved at se på $f$'s opførsel på linjer gennem $z_0$, så lad $v = (h,k)$ være en enhedsvektor i $\mathbb{R^2}$ og lad $g$ være funktionen defineret ved
+  \begin{align*}
+    g(t) = f(z_0 + tv) = f(x_0 + th, y_0 + tk)
+  \end{align*}
+  og med delmængden
+  \begin{align*}
+    D_g = \{t \in \mathbb{R} \ | \ z_0 + tv \in D\}
+  \end{align*}
+  af $\mathbb{R}$ som sin definitionsmængde.
+
+  Da $B_r(z_0) \subseteq D$ og $\| v \| = 1$, er $]-r,r[ \subseteq D_g$.
+
+  Da $f$'s partielt afledte af anden orden eksisterer og er kontinuerte i $B_r(z_0)$, følger det af sætning 9.12, at de partielt afledte af første orden er differentiable i hele denne kugle.
+
+  Så er $f$'s partielt afledte af første orden også kontinuerte i $B_r(z_0)$, og igen får vi af Sætning 9.12, at funktionen $f$ selv er differentiabel i $B_r(z_0)$.
+
+  Kædereglen giver nu, at $g$ er differentiabel i intervallet $]-r,r[$ med diferentialkvotienten
+  \begin{align}\label{9.35}
+    g'(t) = \frac{\partial f}{\partial x} (x_0 + th, y_0 + tk)h + \frac{\partial f}{\partial y}(x_0 + th, y_0 + tk)k.
+  \end{align}
+
+  Da $\frac{\partial f}{\partial x}$ og $\frac{\partial f}{\partial y}$ også er differentiable i $B_r(z_0)$, kan Kædereglen bruges på udtrykket for $g'(t)$ på højre side af denne ligning, og vi får, at $g'$ er differentiabel i intervallet $]-r,r[$ med differentialkvotienten
+  \begin{align*}
+    g''(t) = &\left[ \frac{\partial^2 f}{\partial x^2}(x_0 + th, y_0 + tk)h + \frac{\partial^2 f}{\partial y \partial x}(x_0 + th, y_0 + tk)k \right] h\\
+    &+ \left[ \frac{\partial^2 f}{\partial x \partial y}(x_0 + th, y_0 + tk)h + \frac{\partial^2 f}{\partial y^2}(x_0 + th, y_0 + tk) k \right] k.
+  \end{align*}
+  Med henblik på at skrive dette lidt mere overskueligt indfører vi betegnelserne
+  \begin{align}
+    A(x,y) &= \frac{\partial^2 f}{\partial x^2}(x,y)\nonumber\\
+    B(x,y) &= \frac{\partial^2 f}{\partial x \partial y}(x,y), \quad \text{og} \label{9.36}\\
+    C(x,y) &= \frac{\partial^2 f}{\partial y^2}(x,y).\nonumber
+  \end{align}
+  Idet vi husker, fra sætningen om blandede partielt afledete og fordi de afledte er kontiuerte
+  \begin{align*}
+    \frac{\partial^2 f}{\partial x \partial y}(x,y) = \frac{\partial^2 f}{\partial y \partial x}(x,y) = B(x,y)
+  \end{align*}
+  ifølge sætning 9.18, har vi så
+  \begin{align}\label{9.37}
+    g''(t) = A(z_0 + tv)h^2 + 2B(z_0 + tv)hk + C(z_0 + tv)k^2.
+  \end{align}
+  Resten af beviset for sætningen deler vi op i de to tilfælde, som der er skelnet imellem i sætningen.
+
+  (ii) Lad os først betragte tilfældet
+  \textit{(a)} $B^2 > AC$.
+  Ifølge Lemma 9.25 eksisterer der vektorer $u_1 = (s_1, t_1)$ og $u_2 = (s_2, t_2)$ således, at
+  \begin{align*}
+    As_1^2 + 2Bs_1t_1 + Ct_1^2 > 0 \quad \text{og} \quad As_2^2 + 2Bs_2t_2 + Ct_2^2 < 0.
+  \end{align*}
+
+  Lad $v_1 = (h_1, k_1)$ og $v_2 = (h_2, k_2)$ være de enhedsvektorer, vi får ved at normere $u_1$ og $u_2$, altså
+  \begin{align*}
+    v_1 = \frac{u_1}{\| u_1 \|} \quad \text{og} \quad v_2 = \frac{u_2}{\| u_2 \|},
+  \end{align*}
+  og lad $g_1$ og $g_2$ være de to funktioner
+  \begin{align*}
+    g_1(t) &= f(z_0 + tv_1) = f(x_0 + th_1, y_0 + tk_1), \quad \text{0}\\
+    g_2(t) &= f(z_0 + tv_2) = f(x_0 + th_2, y_0 + tk_2).
+  \end{align*}
+  Ifølge (i) er de begge definerede og to gange differentiable i intervallet $]-r,r[$. Da $\nabla f(x_0, y_0) = 0$, får vi af \eqref{9.35}, at
+  \begin{align*}
+    g_1'(0) = \frac{\partial f}{\partial x}(x_0, y_0)h_1 + \frac{\partial f}{\partial y}(x_0, y_0)k_1 = 0 \quad \text{og} \quad g_2'(0) = 0.
+  \end{align*}
+  I udtrykket
+  \begin{align*}
+    g_1''(t) = A(z_0 + tv_1)h_1^2 + 2B(z_0 + tv_1)h_1k_1 + C(z_0 + tv_1)k_1^2
+  \end{align*}
+  for differentialkvotienten $g_1''$ af anden orden indgår funktionen
+  \begin{align*}
+    (x,y) \mapsto A(x,y)h_1^2 + 2B(z_0 + tv_1)h_1k_1 + C(x,y)k_1^2.
+  \end{align*}
+
+  Den er kontinuert på $B_r(z_0)$, og da
+  \begin{align*}
+    A(x_0, y_0)&h_1^2 + 2B(x_0, y_0)h_1k_1 + C(x_0, y_0)k_1^2\\
+    &= Ah_1^2 + 2Bh_1k_1 + C k_1^2 = \frac{As_1^2 + 2Bs_1t_1 + Ct_1^2}{\| u_1 \|^2}>0,
+  \end{align*}
+  findes der et $\rho > 0$ således, at $\rho < r$ og
+  \begin{align*}
+    A(x,y)h_1^2 + 2B(x,y)h_1k_1 + C(x,y)k_1^2 > 0
+  \end{align*}
+  for alle $(x,y) \in B_\rho (z_0)$.
+
+  Altså er $g''(t) > 0$ for alle $|t| < \rho$, og af Korrolar 7.18 følger så, at funktionen $g_1$ på intervallet $]-\rho, \rho[$ har \textit{strengt} globalt minimum i 0, dvs.
+  \begin{align*}
+    f(z_0 + tv_1) = g_1(t) > g_1(0) = f(z_0)
+  \end{align*}
+  for $0 < |t| < \rho$.
+
+  Heraf ses, at $f$ \textit{ikke} har lokalt maksimum i $z_0$.
+
+  Betragtning afa funktionen $g_2$ viser, at $f$ heller ikke har lokalt minimum i $z_0$, men det vil jo sige at $z_0$ er et saddelpunkt for $f$.
+
+  (iii) Lad os dernæst betragte tilfældet
+  \textit{(b)} $B^2 < AC$
+  Lad os tillige antage, at $A > 0$ og $C > 0$ (tilfældet $A < 0$ og $C < 0$ følger heraf ved at skifte fortegn på $f$).
+
+  Ifølge antagelserne er de tre funktioner
+  \begin{align*}
+    A(x,y), \quad B(x,y) \quad \text{og} \quad C(x,y)
+  \end{align*}
+  i \eqref{9.36} kontinuerte på $B_r(z_0)$, og så er funktionen
+  \begin{align*}
+    (x, y) \mapsto (B(x,y))^2 - A(x,y)C(x,y)
+  \end{align*}
+  det også.
+
+  Da
+  \begin{align*}
+    (B(x_0, y_0))^2 - A(x_0, y_0)C(x_0, y_0) = B^2 - AC < 0
+  \end{align*}
+  og
+  \begin{align*}
+    A(x_0, y_0) = A > 0,
+  \end{align*}
+  findes der et $\rho > 0$ således, at $\rho < r$ og
+  \begin{align*}
+    (B(x,y))^2 - A(x_0, y_0)C(x_0, y_0) = B^2 - AC < 0
+  \end{align*}
+  og
+  \begin{align*}
+    (B(x,y))^2 - A(x,y)C(x,y) < 0 \quad \text{og} \quad A(x,y) > 0
+  \end{align*}
+  for alle $(x,y) \in B_\rho(z_0)$.
+
+  Af Lemma 9.25 får vi, at
+  \begin{align*}
+    A(x,y)h^2 + 2B(x,y)hk + C(x,y)k^2 > 0
+  \end{align*}
+  for alle $(x,y) \in B_\rho(z_0)$ og for enhver enhedsvektor $v = (h,k) \in \mathbb(R)^2$.
+
+  Lad da $v = (h,k)$ være en vilkårlig enhedsvektor i $\mathbb{R}^2$ og betragt som i (i) funktionen
+  \begin{align*}
+    g(t) = f(z_0 + tv) = f(x_0 + th, y_0 + tk).
+  \end{align*}
+
+  Som i (ii) ovenfor ser vi, at $g'(0) = 0$ og at $g''(t) > 0$ for alle $|t| < \rho$. Af Korrolar 7.18 følger så, at betragtet på intervallet $]-\rho, \rho[$ har $g$ strengt globalt minimum i 0, dvs.
+  \begin{align*}
+    f(z_0 + tv) = g(t) > g(0) = f(z_0)
+  \end{align*}
+  for $0 < |t| < \rho$.
+
+  Lad nu $z = (x,y)$ være et vilkårligt fra $z_0 = (x_0, y_0)$ forskelligt punkt i $B_\rho(z_0)$. Et sådant punkt kan skrives på formen
+  \begin{align*}
+    z = z_0 + tv, \quad \text{hvor} \quad \| v \| = 1 \quad \text{og} \quad 0 < t < \rho,
+  \end{align*}
+  og da det foregående gælderr for alle $v$, ser vi, at
+  \begin{align*}
+    f(x,y) > f(z_0) \quad \text{for alle} \quad (x,y) \in B_\rho(z_0),
+  \end{align*}
+  og altså, at $f$ har strengt lokalt minimum i $z_0$.
+\end{proof}
