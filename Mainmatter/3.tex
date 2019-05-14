@@ -1,1 +1,28 @@
 % !TEX root = ../main.tex
+\begin{boks}{Lemma 8.1}
+  Lad $\mathbf{u}_0 \in \mathcal{O} \dot{\subset} \mathbb{R}^m$, $\mathbf{f} \in C^1(K, \mathbb{R}^m)$ hvor $K \ := \ \overline{B_{\varepsilon_\beta}(\mathbf{u}_0)} \subset \mathcal{O}$ er en lukket kugle.
+  Definér $\mathbf{g}(\mathbf{u}) = \mathbf{f}(\mathbf{u}) - [D\mathbf{f}(\mathbf{u}_0)]\mathbf{u}$ på $K$.
+  Hvor $[D\mathbf{f}(\mathbf{u}_0)]$ er jacobi-matricen med indgange $[D\mathbf{f}(\mathbf{u}_0)] = \dfrac{\partial f_i}{\partial x_j}(\mathbf{u}_0)$.
+
+  Så gælder det for ethvert $\beta > 0$ at der eksisterer et $\varepsilon_\beta > 0$ sådan at
+  \begin{align*}
+    \| \mathbf{g}(\mathbf{u}) - \mathbf{g}(\mathbf{u}') \| \leq \beta \| \mathbf{u} - \mathbf{u}' \|, \quad \forall \mathbf{u}, \mathbf{u}' \in K
+  \end{align*}
+\end{boks}
+
+\begin{boks}{Proposition 8.2}
+  Lad $\mathcal{O} \ \dot{\subset} \ \mathbb{R}^m$ og $\mathbf{u}_0 \in \mathcal{O}$. Lad $\mathbf{f}$ være en $C^1(\mathcal{O};\mathbb{R}^m)$ vektorfunktion, sådan at $[D\mathbf{f(\mathbf{u}_0)}] \in \mathcal{L}(\mathbb{R}^m; \mathbb{R}^m)$ er en invertibel matrix.
+  Så eksisterer der et $r > 0$ så lille at restriktionen af $\mathbf{f}$ til $B_r(\mathbf{u}_0)$ er injektiv.
+\end{boks}
+
+\begin{boks}{Sætning 8.3}
+  Lad $\mathbf{u}_0 \in U_0 \ \dot{\subset} \ \mathcal{O} \ \dot{\subset} \  \mathbb{R}^m$, $\mathbf{g} \in C^1(\mathcal{O}; \mathbb{R}^m)$ med $[D\mathbf{g}(\mathbf{u}_0)]$ invertibel, hvor $U_0$ er en kugle omkring $\mathbf{u}_0$ så $\mathbf{g}_{|U_0}$ er injektiv.
+  Så findes $\mathbb{R}^m \ \dot{supset} \ E \ni \mathbf{g}(\mathbf{u}_0)$ og $\mathbf{f} \in C^1(E;\mathbb{R}^m)$ hvorom der gælder
+  \begin{enumerate}[label = (\roman*)]
+    \item $V \ := \ \mathbf{g}^{-1}_{|U_0}(E) = \mathbf{f}(E) \ \dot{\subset} \ \mathbb{R}^m$
+    \item $\mathbf{g}(\mathbf{f}(\mathbf{w})) = \mathbf{w}$ på $E$ og $\mathbf{f}(\mathbf{g}(\mathbf{u})) = \mathbf{u}$ på $V$
+    \item $[D\mathbf{g}(\mathbf{f}(\mathbf{w}))]$ er invertibel og $[D\mathbf{f}(\mathbf{w})] = [D\mathbf{g}(\mathbf{f}(\mathbf{w}))]^{-1}$.
+  \end{enumerate}
+\end{boks}
+
+\textbf{Her mangler bevis!!!}
