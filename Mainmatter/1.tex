@@ -165,3 +165,55 @@
   \end{align*}
   og altså, at $f$ har strengt lokalt minimum i $z_0$.
 \end{proof}
+
+\subsection{Differentiabilitetssætningen i det genrelle tilfælde}
+\begin{boks}{Sætning 9.12}
+  Lad $f \ : \ U \rightarrow \mathbb{R}$ være en funktion og lad $x_0 \in U$. Antag, at de partielt afledte af $f$ eksisterer i alle punkter i en åben kugle $B_r(x_0) \subseteq U$, og at de derved fremkomne funktioner
+  \begin{align*}
+    \frac{\partial f}{\partial x_j} \ : \ B_r(x_0) \rightarrow \mathbb{R}, \
+    j = 1,2,\ldots,n,
+  \end{align*}
+  alle er kontinuerte i $x_0$. Så er $f$ differentiabel i $x_0$.
+\end{boks}
+\begin{proof}
+  Ideerne i beviset er de samme som i beviset for tilfældet $n = 2$, så vi gør ikke så meget ud af detaljerne. Lad $x_0$ have koordinaterne $x_0 = (a_1, a_2, \ldots, a_n)$ og lad $x = (x_1, x_2, \ldots, x_n)$ være et vilkårligt punkt i $b_r(x_0)$. Sæt
+  \begin{align*}
+    y^k = (x_1, x_2, \ldots, x_k, a_{k + 1}, a_{k + 2}, \ldots, a_n)
+    \quad \text{for} \quad k = 0, 1, 2, \ldots, n.
+  \end{align*}
+  Bemærk, at $y^0 = x_0$, $y^n = x$ og $y^k \in B_r(x_0)$ for alle $k$, samt at
+  \begin{align*}
+    f(x) - f(x_0) = \sum_{k = 1}^n f(y^k) - f(y^{k - 1}).
+  \end{align*}
+  Idet alle koordinater for $y^k$ og $y^{k - 1}$ er de samme med undtagelse af den $k$'te, fås af Middelværdisætningen, at
+  \begin{align*}
+    f(y^k) - f(y^{k - 1}) = \frac{\partial f}{\partial x_k}(z_k)(x_k - a_k),
+  \end{align*}
+  hvor $z_k$ er et punkt på linjestykket, der forbinder $y^{k - 1}$ med $y^k$. Vi har altså
+  \begin{align*}
+    f(x) - f(x_0) &= \sum_{k = 1}^n \frac{\partial f}{\partial x_k}(z_k)(x_k - a_k) \\
+    &= \langle \nabla f(x_0), x - x_0 \rangle\\
+    &\quad + \sum_{k = 1}^n \left( \frac{\partial f}{\partial x_k}(z_k) - \frac{\partial f}{\partial x_k}(x_0) \right) (x_k - a_k).
+   \end{align*}
+   Heraf følger resultatet, hvis vi siger, at der eksisterer en o-funktion $\varphi$ således, at
+   \begin{align*}
+     \sum_{k = 1}^n \left( \frac{\partial f}{\partial x_k}(z_k) - \frac{\partial f}{\partial x_k}(x_0) \right) (x_k - a_k) =
+     \varphi(x - x_0) \| x -x_0 \|.
+   \end{align*}
+   Da denne ligning er opfyldt for $x = x_0$, hvis $\varphi(0) = 0$, skal vi blot bevise, at
+   \begin{align*}
+     \sum_{k = 1}^n \left( \frac{\partial f}{\partial x_k}(z_k) - \frac{\partial f}{\partial x_k}(x_0) \right) \frac{x_k - a_k}{\| x - x_0 \|} \rightarrow 0 \quad \text{for} \quad x \rightarrow x_0.
+   \end{align*}
+   Lad $\varepsilon > 0$ være givet. For ethvert $k$ findes et $\delta_k > 0$ således, at der for alle $x \in B_r(x_0)$ gælder
+   \begin{align*}
+     \| x - x_0 \| \delta_k \quad \Rightarrow \quad \left| \frac{\partial f}{\partial x_k}(x) - \frac{\partial f}{\partial x_k}(x_0) \right| < \frac{\varepsilon}{n}.
+   \end{align*}
+   Vælg $\delta$ som det mindste af tallene $r$ og $\delta_1, \delta_2, \ldots, \delta_n.$
+
+   Da $|x_k - a_k| \leq \| x - x_0 \|$ for alle $k = 1,2, \ldots, n,$ får vi for alle $x$ i den udprikkede kugle $\dot{B}_\delta (x_0)$
+   \begin{align*}
+     \bigg| \sum_{k = 1}^n &\bigg( \frac{\partial f}{\partial x_k}(z_k) - \frac{\partial f}{\partial x_k}(x_0) \bigg) \frac{x_k - a_k}{\| x - x_0 \|} \bigg| \\
+     &\leq \sum_{k = 1}^n \left|\frac{\partial f}{\partial x_k}(z_k) - \frac{\partial f}{\partial x_k}(x_0)\right| < n\frac{\varepsilon}{n} = \varepsilon,
+   \end{align*}
+   hvormed sætningen er bevist.
+\end{proof}
