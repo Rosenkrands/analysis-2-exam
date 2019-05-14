@@ -1,5 +1,41 @@
 % !TEX root = ../main.tex
-Måske vil jeg have Taylors Sætning for funktioner af én variabel med i stedet for Sætning 2.2.
+\begin{boks}{Sætning 1.1 (Taylors Sætning med restled)}
+  Lad $k \in \mathbb{N}$, $x_0, x \in A \subset \mathbb{R}$, $x \neq x_0$ og $f \ : \ A \rightarrow \mathbb{R}$ opfylde, at den $j$'te afledede $f^{(j)}$ af $f$ eksisterer og er kontinuert på det lukkede interval mellem $x_0$ og $x$ og differntiabel på det åbne interval mellem $x_0$ og $x$ for alle $j \leq k$.
+  Så findes et punkt $c$ strengt mellem $x_0$ og $x$ så
+  \begin{align}\label{(1)}
+    f(x) = \sum_{j = 0}^k \frac{f^{(j)}(x_0)}{j!}(x - x_0)^j + \frac{f^{(k + 1)}(c)}{(k + 1)!}(x - x_0)^{k + 1}.
+  \end{align}
+\end{boks}
+\begin{proof}
+  For $x \neq x_0$ findes netop én løsning $M \in \mathbb{R}$ til ligningen
+  \begin{align*}
+    f(x) = \sum_{j = 0}^k\frac{f^{(j)}(x_0)}{j!}(x - x_0)^j + M(x - x_0)^{k + 1}.
+  \end{align*}
+  Vi vil vise, at $M = \frac{f^{(k + 1)}(c)}{(k + 1)!}$ for et $c$ mellem $x_0$ og $x$. For at vise dette, definierer vi funktionen $F \ : \ [a,b] \rightarrow \mathbb{R}$ på følgende måde:
+  \begin{align*}
+    F(t) = \sum_{j = 0}^k \frac{f^{(j)}(t)}{j!}(x - t)^j + M(x - t)^{k + 1}.
+  \end{align*}
+Ifølge antagelserne er $F$ kontinuert på det lukkede intercal mellem $x_0$ og $x$ og differentiable på det åbne intercal mellem $x_0$ og $x$.
+Vi har valgt $M$, således at $F(x_0) = f(x)$, og vi har desuden, at $F(x) = \frac{f^{(0)}(x)}{0!}0^0 + \sum_{j = 1}^k \frac{f^{(j)}(x)}{j!} \cdot 0^j + M \cdot 0^{k + 1} = f(x)$. Dermed kan vi anvende Middelværdisætningen på $F$ på intervallet mellem $x_0$ og $x$ og får eksistensen af et $c$ mellem $x_0$ og $x$ så
+\begin{align*}
+  F'(c) = \frac{F(x) - F(x_0)}{x - x_0} = 0.
+\end{align*}
+Men
+\begin{align*}
+  F'(c) = f'(c) + \sum_{j = 1}^k \left( \frac{f^{(j + 1)}(c)}{j!}(x - c)^j -
+  \frac{f^{(j)}(c)}{(j - 1)!}(x - c)^{j - 1} \right) -
+  M(k + 1)(x - c)^k,
+\end{align*}
+hvor alle led umiddelbart går ud med hinanden parvist, borset fra de to led i
+\begin{align*}
+  \frac{f^{(k + 1)}(c)}{k!}(x - c)^k - M(k + 1)(x - c)^k,
+\end{align*}
+som dermed må smumme til $0$, da $F'(c) = 0$, og dermed er
+\begin{align*}
+  M = \frac{f^{(k + 1)}(c)}{(k + 1)k!} = \frac{f^{(k + 1)}(c)}{(k + 1)!}
+\end{align*}
+som påstået.
+\end{proof}
 
 \subsection{Taylors Sætning for funktioner af flere variable}
 Før vi formulerer og beviser Taylors Sætning for funktioner af flere variable, vil vi først introducere en meget nyttig og - anvendt notation.
@@ -33,101 +69,101 @@ Før vi formulerer og beviser Taylors Sætning for funktioner af flere variable,
   se Opgave 1, hvoraf resultatet følger med $y = (1 - c)x_0 + cx$.
 \end{proof}
 
-\subsection{Lokale ekstrema for funktioner af flere variable}
-\begin{boks}{Definition 4.4 (Hesse-matrix)}
-  Lad $x \in A \subset \mathbb{R}^n$, $A$ åben og $f \in C^2(A)$. Så kaldes matricen $H(x)$ givet ved
-  \begin{align*}
-    h_{ij}(x) = \frac{\partial^2 f(x)}{\partial x_i \partial x_j}, \quad
-    H(x) = (h_{ij}(x))_{i,j = 1}^n
-  \end{align*}
-  for \textit{Hesse-matricen} for $f$ i $x$.
-\end{boks}
-
-\begin{boks}{Lemma 4.5}
-  Lad $x,x_0 \in A \subset \mathbb{R}^n$ opfylde at $A$ er åben og at $L = \{(1-t)x_0 + tx \in \mathbb{R}^n \ | \ t \in (0,1)\}$ så
-  \begin{align*}
-    f(x) = f(x_0) + \langle \nabla f(x_0), x - x_0 \rangle + \frac{1}{2} \langle x - x_0, H(y)(x - x_0) \rangle.
-  \end{align*}
-\end{boks}
-\begin{proof}
-  Beviset er blot Taylors sætning med restled for $k = 1$:
-  \begin{align}
-    f(x) &= \sum_{| \alpha | \leq 1} \frac{\partial^\alpha f(x_0)}{\alpha!} (x - x_0)^\alpha +
-    \sum_{| \alpha | = 3} \frac{\partial^\alpha f(y)}{\alpha!} (x - x_0)^\alpha \nonumber\\
-    &= \frac{\partial^0 f(x_0)}{0!}(x - x_0)^0 +
-    \frac{\partial^1 f(x_0)}{1!}(x - x_0)^1 +
-    \frac{1}{2}\frac{\partial^2 f(y)}{\partial x_1^2}(x - x_0)^2 +
-    \frac{1}{2}\frac{\partial^2 f(y)}{\partial x_2^2}(x - x_0)^2\nonumber\\
-    &\qquad+
-    \frac{1}{2}\frac{\partial^2f(y)}{\partial x_1 \partial x_2}(x - x_0) +
-    \frac{1}{2}\frac{\partial^2 f(y)}{\partial x_1 \partial x_2}(x - x_0) +
-    \frac{1}{2}\frac{\partial^2 f(y)}{\partial x_2 \partial x_1}(x - x_0)\nonumber\\
-    &= f(x_0) + f'(x_0)(x - x_0) +
-    1/2 \left( \frac{\partial^2f(y)}{\partial x_1 \partial x_2}(x - x_0)^2 +
-    \frac{\partial^2 f(y)}{\partial x_2^2}(x - x_0)^2 + 2\frac{\partial^2 f(y)}{\partial x_1 \partial x_2} \right)\label{taylor_omskrivning}
-  \end{align}
-  Her kommer nogle mellem trin, de følgende matricer bruges til forståelse
-  \begin{align*}
-    H(y) =
-    \begin{bmatrix}
-      \frac{\partial^2 f(y)}{\partial x_1^2} &
-      \frac{\partial^2 f(y)}{\partial x_2 \partial x_1} \\
-      \frac{\partial^2 f(y)}{\partial x_1 \partial x_2} &
-      \frac{\partial^2 f(y)}{\partial x_2^2}
-    \end{bmatrix}, \qquad
-    H(y)(x - x_0) =
-    \begin{bmatrix}
-      \frac{\partial^2 f(y)}{\partial x_1^2}(x - x_0) &
-      \frac{\partial^2 f(y)}{\partial x_2 \partial x_1}(x - x_0) \\
-      \frac{\partial^2 f(y)}{\partial x_1 \partial x_2}(x - x_0) &
-      \frac{\partial^2 f(y)}{\partial x_2^2}(x - x_0)
-    \end{bmatrix}.
-  \end{align*}
-  Ved brug af det ovenstående ser vi at
-  \begin{align*}
-    &\frac{1}{2} \langle x - x_0, H(y)(x - x_0) \rangle =\\
-    &\qquad \frac{1}{2}
-    \bigg( \frac{\partial^2 f(y)}{\partial x_1^2}(x- x_0)^2 +
-    \frac{\partial^2 f(y)}{\partial x_2 \partial x_1}(x- x_0)^2 +
-    \frac{\partial^2 f(y)}{\partial x_1 \partial x_2}(x- x_0)^2 +
-    \frac{\partial^2 f(y)}{\partial x_2^2}(x- x_0)^2 \bigg)
-  \end{align*}
-  Nu kan vi omskrive \eqref{taylor_omskrivning} til det følgende, ved brug af det ovenstående
-  \begin{align*}
-    f(x_0) + \langle \nabla f(x_0), x - x_0 \rangle + \frac{1}{2}\langle x - x_0, H(y)(x - x_0)\rangle
-  \end{align*}
-  hvilket fuldender beviset.
-\end{proof}
-
-\begin{boks}{Definition 4.6}
-  Antag at $A \subset \mathbb{R}^n$ er åben, at $f \in C^2(A)$, at $x_0 \in A$ er et kritisk punkt for $f$ og at alle Hesse-matricen $H(x_0)$'s egenværdier er positive.
-  Så er $x_0$ et lokalt minimumspunkt for $f$. Hvis alle $H(x_0)$'s egenværdier omvendt er negative, er $x_0$ et lokalt maksimumspunkt for $f$.
-\end{boks}
-\begin{proof}
-  Antag uden tab af generalitet at alle egeværdier for $H(x_0)$ er positive.
-  Da $H(x_0)$ er reel og symmestrisk er den selvadjungeret og spektralsætningen giver, at $H(x_0)$ har $n$ reelle, ortonormale egenvektorer $e_i$, $i = 1, \ldots, n$ med tilhørende egenværdier $\lambda_i$. Vi kan derfor for $z \in \mathbb{R}^n$ skrive
-  \begin{align*}
-    z = \sum_{i = 1}^n \langle z, e_i \rangle e_i
-  \end{align*}
-  og dermed
-  \begin{align*}
-    H(x_0)z = \sum_{i = 1}^n \langle z, e_i \rangle \lambda_i e_i
-  \end{align*}
-  eller
-  \begin{align*}
-    \langle z, H(x_0)z \rangle = \sum_{i = 1}^n \lambda_i \langle z, e_i \rangle^2.
-  \end{align*}
-  Lad $m = \min \{ \lambda_i \ | \ i \in \{ 1, \ldots, n \}\} > 0$. Så er
-  \begin{align*}
-    \langle z, H(x_0)z \rangle = \sum_{i = 1}^n \lambda_i \langle z, e_i \rangle^2 \geq \sum_{i = 1}^n m \langle z, e_i \rangle^2 = m \| z \|^2.
-  \end{align*}
-  Sæt $A(x) = H(y) - H(x_0)$, som afhænger af $x$ gennem $y \in \{ (1 - t)x_0 + tx \in \mathbb{R}^n \ | \ t \in (0,1) \}$.
-  Da $f \in C^2(A)$ er $\| A(x) \|_{HS}$ kontinuert og vi kan finde $r > 0$ så $x \in B_r(x_0) \backslash \{ x_0 \}$ medfører, at $\| A(x) \|_{HS} \leq \frac{1}{2}m$. Anvender vi nu Lemma 4.5 på $x \in B_r(x_0)$ fås
-  \begin{align*}
-    f(x) &= f(x_0) + \langle \nabla f(x_0), x - x_0 \rangle + \frac{1}{2}\langle x - x_0, H(y)(x - x_0)\rangle \\
-    &= f(x_0) + 0 + \frac{1}{2}\Big( \langle x - x_0, H(x_0)(x - x_0) \rangle + \langle x - x_0, A(x)(x - x_0) \rangle \Big)\\
-    &\geq f(x_0) + \frac{1}{2}\| x - x_0 \|^2 (m - \frac{1}{2}m) =
-    f(x_0) + \frac{m\| x - x_0 \|^2}{4},
-  \end{align*}
-  hvor vi igen brugte Cauchy-Schwartz.
-\end{proof}
+% \subsection{Lokale ekstrema for funktioner af flere variable}
+% \begin{boks}{Definition 4.4 (Hesse-matrix)}
+%   Lad $x \in A \subset \mathbb{R}^n$, $A$ åben og $f \in C^2(A)$. Så kaldes matricen $H(x)$ givet ved
+%   \begin{align*}
+%     h_{ij}(x) = \frac{\partial^2 f(x)}{\partial x_i \partial x_j}, \quad
+%     H(x) = (h_{ij}(x))_{i,j = 1}^n
+%   \end{align*}
+%   for \textit{Hesse-matricen} for $f$ i $x$.
+% \end{boks}
+%
+% \begin{boks}{Lemma 4.5}
+%   Lad $x,x_0 \in A \subset \mathbb{R}^n$ opfylde at $A$ er åben og at $L = \{(1-t)x_0 + tx \in \mathbb{R}^n \ | \ t \in (0,1)\}$ så
+%   \begin{align*}
+%     f(x) = f(x_0) + \langle \nabla f(x_0), x - x_0 \rangle + \frac{1}{2} \langle x - x_0, H(y)(x - x_0) \rangle.
+%   \end{align*}
+% \end{boks}
+% \begin{proof}
+%   Beviset er blot Taylors sætning med restled for $k = 1$:
+%   \begin{align}
+%     f(x) &= \sum_{| \alpha | \leq 1} \frac{\partial^\alpha f(x_0)}{\alpha!} (x - x_0)^\alpha +
+%     \sum_{| \alpha | = 3} \frac{\partial^\alpha f(y)}{\alpha!} (x - x_0)^\alpha \nonumber\\
+%     &= \frac{\partial^0 f(x_0)}{0!}(x - x_0)^0 +
+%     \frac{\partial^1 f(x_0)}{1!}(x - x_0)^1 +
+%     \frac{1}{2}\frac{\partial^2 f(y)}{\partial x_1^2}(x - x_0)^2 +
+%     \frac{1}{2}\frac{\partial^2 f(y)}{\partial x_2^2}(x - x_0)^2\nonumber\\
+%     &\qquad+
+%     \frac{1}{2}\frac{\partial^2f(y)}{\partial x_1 \partial x_2}(x - x_0) +
+%     \frac{1}{2}\frac{\partial^2 f(y)}{\partial x_1 \partial x_2}(x - x_0) +
+%     \frac{1}{2}\frac{\partial^2 f(y)}{\partial x_2 \partial x_1}(x - x_0)\nonumber\\
+%     &= f(x_0) + f'(x_0)(x - x_0) +
+%     1/2 \left( \frac{\partial^2f(y)}{\partial x_1 \partial x_2}(x - x_0)^2 +
+%     \frac{\partial^2 f(y)}{\partial x_2^2}(x - x_0)^2 + 2\frac{\partial^2 f(y)}{\partial x_1 \partial x_2} \right)\label{taylor_omskrivning}
+%   \end{align}
+%   Her kommer nogle mellem trin, de følgende matricer bruges til forståelse
+%   \begin{align*}
+%     H(y) =
+%     \begin{bmatrix}
+%       \frac{\partial^2 f(y)}{\partial x_1^2} &
+%       \frac{\partial^2 f(y)}{\partial x_2 \partial x_1} \\
+%       \frac{\partial^2 f(y)}{\partial x_1 \partial x_2} &
+%       \frac{\partial^2 f(y)}{\partial x_2^2}
+%     \end{bmatrix}, \qquad
+%     H(y)(x - x_0) =
+%     \begin{bmatrix}
+%       \frac{\partial^2 f(y)}{\partial x_1^2}(x - x_0) &
+%       \frac{\partial^2 f(y)}{\partial x_2 \partial x_1}(x - x_0) \\
+%       \frac{\partial^2 f(y)}{\partial x_1 \partial x_2}(x - x_0) &
+%       \frac{\partial^2 f(y)}{\partial x_2^2}(x - x_0)
+%     \end{bmatrix}.
+%   \end{align*}
+%   Ved brug af det ovenstående ser vi at
+%   \begin{align*}
+%     &\frac{1}{2} \langle x - x_0, H(y)(x - x_0) \rangle =\\
+%     &\qquad \frac{1}{2}
+%     \bigg( \frac{\partial^2 f(y)}{\partial x_1^2}(x- x_0)^2 +
+%     \frac{\partial^2 f(y)}{\partial x_2 \partial x_1}(x- x_0)^2 +
+%     \frac{\partial^2 f(y)}{\partial x_1 \partial x_2}(x- x_0)^2 +
+%     \frac{\partial^2 f(y)}{\partial x_2^2}(x- x_0)^2 \bigg)
+%   \end{align*}
+%   Nu kan vi omskrive \eqref{taylor_omskrivning} til det følgende, ved brug af det ovenstående
+%   \begin{align*}
+%     f(x_0) + \langle \nabla f(x_0), x - x_0 \rangle + \frac{1}{2}\langle x - x_0, H(y)(x - x_0)\rangle
+%   \end{align*}
+%   hvilket fuldender beviset.
+% \end{proof}
+%
+% \begin{boks}{Definition 4.6}
+%   Antag at $A \subset \mathbb{R}^n$ er åben, at $f \in C^2(A)$, at $x_0 \in A$ er et kritisk punkt for $f$ og at alle Hesse-matricen $H(x_0)$'s egenværdier er positive.
+%   Så er $x_0$ et lokalt minimumspunkt for $f$. Hvis alle $H(x_0)$'s egenværdier omvendt er negative, er $x_0$ et lokalt maksimumspunkt for $f$.
+% \end{boks}
+% \begin{proof}
+%   Antag uden tab af generalitet at alle egeværdier for $H(x_0)$ er positive.
+%   Da $H(x_0)$ er reel og symmestrisk er den selvadjungeret og spektralsætningen giver, at $H(x_0)$ har $n$ reelle, ortonormale egenvektorer $e_i$, $i = 1, \ldots, n$ med tilhørende egenværdier $\lambda_i$. Vi kan derfor for $z \in \mathbb{R}^n$ skrive
+%   \begin{align*}
+%     z = \sum_{i = 1}^n \langle z, e_i \rangle e_i
+%   \end{align*}
+%   og dermed
+%   \begin{align*}
+%     H(x_0)z = \sum_{i = 1}^n \langle z, e_i \rangle \lambda_i e_i
+%   \end{align*}
+%   eller
+%   \begin{align*}
+%     \langle z, H(x_0)z \rangle = \sum_{i = 1}^n \lambda_i \langle z, e_i \rangle^2.
+%   \end{align*}
+%   Lad $m = \min \{ \lambda_i \ | \ i \in \{ 1, \ldots, n \}\} > 0$. Så er
+%   \begin{align*}
+%     \langle z, H(x_0)z \rangle = \sum_{i = 1}^n \lambda_i \langle z, e_i \rangle^2 \geq \sum_{i = 1}^n m \langle z, e_i \rangle^2 = m \| z \|^2.
+%   \end{align*}
+%   Sæt $A(x) = H(y) - H(x_0)$, som afhænger af $x$ gennem $y \in \{ (1 - t)x_0 + tx \in \mathbb{R}^n \ | \ t \in (0,1) \}$.
+%   Da $f \in C^2(A)$ er $\| A(x) \|_{HS}$ kontinuert og vi kan finde $r > 0$ så $x \in B_r(x_0) \backslash \{ x_0 \}$ medfører, at $\| A(x) \|_{HS} \leq \frac{1}{2}m$. Anvender vi nu Lemma 4.5 på $x \in B_r(x_0)$ fås
+%   \begin{align*}
+%     f(x) &= f(x_0) + \langle \nabla f(x_0), x - x_0 \rangle + \frac{1}{2}\langle x - x_0, H(y)(x - x_0)\rangle \\
+%     &= f(x_0) + 0 + \frac{1}{2}\Big( \langle x - x_0, H(x_0)(x - x_0) \rangle + \langle x - x_0, A(x)(x - x_0) \rangle \Big)\\
+%     &\geq f(x_0) + \frac{1}{2}\| x - x_0 \|^2 (m - \frac{1}{2}m) =
+%     f(x_0) + \frac{m\| x - x_0 \|^2}{4},
+%   \end{align*}
+%   hvor vi igen brugte Cauchy-Schwartz.
+% \end{proof}
