@@ -1,1 +1,60 @@
 % !TEX root = ../main.tex
+\begin{boks}{Sætning 6.3}
+  Antag $U \ \dot{\subseteq} \ \mathbb{R}^d$, $I \ \dot{\subseteq} \ \mathbb{R}$. Antag $y_0 \in U$ og $r_0, \delta_0 > 0$ så $\overline{B_{r_0}(y_0)} \subset U$, $[t_0 - \delta_0, t_0 + \delta_0] \subset I$.
+  Betragt $f \ : \ I \times U \rightarrow \mathbb{R}^d$ kontinuert hvor om der gælder for $L > 0$.
+  \begin{align}\label{enkelt_kors}
+    \| f(t,x) - f(t,y)\| \leq L \| x - y \|, \quad \forall t \in [t_0 - \delta_0, t_0 + \delta_0], \quad \forall x,y \in B_{r_0}(y_0)
+  \end{align}
+  så for IVP:
+  \begin{align}\label{trippel_kors}
+    y'(t) = f(t, y(t)), \quad y(t_0) = y_0.
+  \end{align}
+  Definer $\delta_1 := \min \{\delta_0, r_0/M, 1/L \}$. Da eksisterer en entydig løsning
+  \begin{align*}
+    y \ : \ (t - \delta_1, t_0 + \delta_1) \rightarrow \overline{B_{r_0}(y_0)}
+  \end{align*}
+\end{boks}
+\begin{proof}
+  Tag $ 0 < \delta < \delta_1$, og definer $K \ := \ [t_0 - \delta, t_0 + \delta] \subset \mathbb{R}$ enhver kontinuert funktion $\phi \ : \ K \rightarrow \mathbb{R}^d$ er født begrænset og fordi $\mathbb{R}^d$ er et Banach rum siger proposition 6.2 at rummet $(C(K;\mathbb{R}^d), d_\infty)$ er et fuldstændigt metrisk rum.
+
+  Definer
+  \begin{align}\label{dobbelt_kors}
+    X \ := \ \{ g \in C(K;\mathbb{R}^d) \ : \ g(t) \in \overline{B_{r_0}(y_0)}, \forall t \in K \}
+  \end{align}
+  \begin{boks}{Lemma 6.4}
+    Det metriske rum $(X, d_\infty)$ er fuldstændigt.
+  \end{boks}
+  \begin{proof}
+    Betragt en Cauchy følge $\{ g_n \}_{n\geq 1} \subset X$. Fordi $(C(K;\mathbb{R}^d), d_\infty)$ er fuldstændigt har vi en $g \in (C(K;\mathbb{R}^d)$ hvor $\lim_{n \rightarrow \infty} d_\infty(g_n, g) = 0$. Vi har med andre ord for ethvert $t\in K$
+    \begin{align*}
+      g(t) = \lim_{n \rightarrow \infty} g_n(t), \quad \lim_{n \rightarrow \infty} \| g_n(t) - g(t) \| = 0.
+    \end{align*}
+    Fordi følgen er i $X$ er det følgende opfyldt $\| g_n(t) - y_0 \| \leq r_0 \quad \forall t,n$ hvilket medfører at
+    \begin{align*}
+      \| g(t) - y_0 \| = \lim_{n \rightarrow \infty} \| g_n(t) - y_0 \| \leq r_0
+    \end{align*}
+    og $g$ tilhører dermed $X$ hvilket konkluderer beviset.
+  \end{proof}
+  \begin{boks}{Lemma 6.5}
+    Definer $F \ : \ X \rightarrow C(K; \mathbb{R}^d)$
+    \begin{align*}
+      [F(g)](t) \ := \ y_0 + \int_{t_0}^t f(s,g(s))ds, \quad \forall t \in K
+    \end{align*}
+    hvor $f$ opfylder \eqref{enkelt_kors}. Hvorfor (i) $vm_f \subseteq X$ og (ii) $F \ : \ X \rightarrow X$ er en kontraktion.
+  \end{boks}
+  \begin{proof}
+    \textbf{udeladt}
+  \end{proof}
+  \textbf{Forsættelse af beviset for Sætning 6.3}
+
+  $F$ kontraktion altså siger Banach at der eksisterer et entydig kontinuert funktion $ y \ : \ K \rightarrow \overline{B_{r_0}(y_0)}$ så
+  \begin{align*}
+    y(t) = [F(y)](t) = y_0 + \int_{t_0}^tf(s,y(s))ds, \quad t\in [t_0 - \delta, t_0 + \delta]
+  \end{align*}
+  dette kan differentieres som følge af Analysens Fundamental Sætning
+  \begin{align*}
+    \frac{\partial}{\partial t}\left( \int_{t_0}^t f(s,y(s))ds \right) =
+    f(t, y(t)) = y'(t)
+  \end{align*}
+  hvilket viser \eqref{trippel_kors}.
+\end{proof}
