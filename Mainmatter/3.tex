@@ -1,28 +1,91 @@
 % !TEX root = ../main.tex
-\begin{boks}{Lemma 8.1}
-  Lad $\mathbf{u}_0 \in \mathcal{O} \dot{\subset} \mathbb{R}^m$, $\mathbf{f} \in C^1(K, \mathbb{R}^m)$ hvor $K \ := \ \overline{B_{\varepsilon_\beta}(\mathbf{u}_0)} \subset \mathcal{O}$ er en lukket kugle.
-  Definér $\mathbf{g}(\mathbf{u}) = \mathbf{f}(\mathbf{u}) - [D\mathbf{f}(\mathbf{u}_0)]\mathbf{u}$ på $K$.
-  Hvor $[D\mathbf{f}(\mathbf{u}_0)]$ er jacobi-matricen med indgange $[D\mathbf{f}(\mathbf{u}_0)] = \dfrac{\partial f_i}{\partial x_j}(\mathbf{u}_0)$.
+\subsection{Sætningen om inverse funktioner}
 
-  Så gælder det for ethvert $\beta > 0$ at der eksisterer et $\varepsilon_\beta > 0$ sådan at
-  \begin{align*}
-    \| \mathbf{g}(\mathbf{u}) - \mathbf{g}(\mathbf{u}') \| \leq \beta \| \mathbf{u} - \mathbf{u}' \|, \quad \forall \mathbf{u}, \mathbf{u}' \in K
-  \end{align*}
-\end{boks}
-
-\begin{boks}{Proposition 8.2}
-  Lad $\mathcal{O} \ \dot{\subset} \ \mathbb{R}^m$ og $\mathbf{u}_0 \in \mathcal{O}$. Lad $\mathbf{f}$ være en $C^1(\mathcal{O};\mathbb{R}^m)$ vektorfunktion, sådan at $[D\mathbf{f(\mathbf{u}_0)}] \in \mathcal{L}(\mathbb{R}^m; \mathbb{R}^m)$ er en invertibel matrix.
-  Så eksisterer der et $r > 0$ så lille at restriktionen af $\mathbf{f}$ til $B_r(\mathbf{u}_0)$ er injektiv.
-\end{boks}
-
-\begin{boks}{Sætning 8.3}
-  Lad $\mathbf{u}_0 \in U_0 \ \dot{\subset} \ \mathcal{O} \ \dot{\subset} \  \mathbb{R}^m$, $\mathbf{g} \in C^1(\mathcal{O}; \mathbb{R}^m)$ med $[D\mathbf{g}(\mathbf{u}_0)]$ invertibel, hvor $U_0$ er en kugle omkring $\mathbf{u}_0$ så $\mathbf{g}_{|U_0}$ er injektiv.
-  Så findes $\mathbb{R}^m \ \dot{supset} \ E \ni \mathbf{g}(\mathbf{u}_0)$ og $\mathbf{f} \in C^1(E;\mathbb{R}^m)$ hvorom der gælder
-  \begin{enumerate}[label = (\roman*)]
-    \item $V \ := \ \mathbf{g}^{-1}_{|U_0}(E) = \mathbf{f}(E) \ \dot{\subset} \ \mathbb{R}^m$
-    \item $\mathbf{g}(\mathbf{f}(\mathbf{w})) = \mathbf{w}$ på $E$ og $\mathbf{f}(\mathbf{g}(\mathbf{u})) = \mathbf{u}$ på $V$
-    \item $[D\mathbf{g}(\mathbf{f}(\mathbf{w}))]$ er invertibel og $[D\mathbf{f}(\mathbf{w})] = [D\mathbf{g}(\mathbf{f}(\mathbf{w}))]^{-1}$.
+\begin{boks}{Sætning 8.3 (Sætningen om inverse funktioner)}
+  Lad
+  \begin{itemize}[label = $\ast$]
+    \item $\underline{u}_0 \in U_0 \ \dot{\subset} \ \mathcal{O} \ \dot{\subset} \ \mathbb{R}^m$
+    \item $g \in C^1(\mathcal{O}; \mathbb{R}^m)$ hvor $[Dg(u_0)]$ er invertibel
+    \item $U_0$ er en kugle omkring $\underline{u}_0$ så $g_{|U_0}$ er injektiv
+  \end{itemize}
+  så findes $g(\underline{u}_0) \in E \ \dot{\subset} \ \mathbb{R}^m$, $f \in C^1(E; \mathbb{R}^m)$ og
+  \begin{enumerate}[label = (\arabic*)]
+    \item $V \ := \ g^{-1}_{|U_0} = f(E) \ \dot{\subset} \ \mathbb{R}^m$
+    \item $g(f(w)) = w$ på $E$ og $f(g(u)) = u$ på $V$
+    \item $[Dg(f(w))]$ er invertibel og $[Df(w)] = [Dg(f(w))]^{-1}$
   \end{enumerate}
 \end{boks}
+\begin{proof}
+  $g_{|U_0}$ er injektiv som følge af Proposition 8.2
 
-\textbf{Her mangler bevis!!!}
+  Sæt
+  $$U = U_0 \times \mathbb{R}^m \ \dot{\subset} \ \mathbb{R}^{m + m}$$
+  $$h \in C^1(U; \mathbb{R}^m)$$ $$h(u,w) = g(u) - w$$
+  Definér $a = [u_0, g(u_0)] = [u_0, w_0]$, således at $h(a) = 0$.
+
+  \textbf{Ideen} er nu at vise at $h$ opfylder antagelserne i Sætningen om implicit givne funktioner
+  \begin{enumerate}[label = (\arabic*)]
+    \item $U \ \dot{\subset} \ \mathbb{R}^d$
+    \item $h \ : \ U \rightarrow \mathbb{R}^m \in C^1(U; \mathbb{R}^m)$
+    \item $h(a) = 0$ så $[D_uh(a)]$ er invertibel
+  \end{enumerate}
+  Differentier $h$ m.h.t. $u$
+  $$[D_uh(u,w)] = [Dg(u)]$$
+  indsæt $a$
+  $$[D_uh(a)] = [Dg(u_0)]$$
+  hvor vi ved at højre side er invertibel, derfor må venstre side også være det.
+
+  Dermed er antagelserne i Sætninge om implicit givne funktioner opfyldt og vi ved derfor at der findes
+  $$g(u_0) = w_0 \in E$$
+  $$f \in C^1(E; \mathbb{R}^m)$$
+  så
+  \begin{align}
+    h \Big( [f(w), w] \Big) &= 0 \nonumber\\
+    g(f(w)) - w &= 0 \nonumber\\
+    g(f(w)) &= w \label{kors}
+  \end{align}
+  Vi beviser først \textbf{(1)}, det gør vi ved at vise det følgende
+  $$f(E) \subseteq g^{-1}_{|U_0}(E)
+  \quad \text{og} \quad
+  f(E) \supseteq g^{-1}_{|U_0}(E)$$
+  Vi starter med $(\subseteq)$
+
+  Lad $u \in f(E)$, dvs.
+  $$\exists \ w \in E \quad : \quad u = f(w)$$
+  ifølge \eqref{kors} må
+  $$g(u) = w$$
+  derfor kan vi konkludere at $g(u) \in E$ og dermed $u \in g^{-1}_{|U_0}(E)$.
+  Dette leder os til konklusionen
+  $$f(E) \subset g^{-1}_{|U_0}(E)$$
+
+  Herefter tager vi $(\supseteq)$
+
+  Lad $x \in g^{-1}_{|U_0}(E)$, dvs.
+  $$\exists \ w \in E \quad : \quad w = g(x)$$
+  hvilket vil sige, ifølge \eqref{kors}, at
+  $$w = g(f(w))$$
+  det medfører at
+  $$f(w) = x$$
+  $g_{|U_0}$ er injektiv, $f(w) \in U_0$ og vi kan derfor konkludere at
+  $$g^{-1}_{|U_0}(E) \subseteq f(E)$$
+  hvilket beviser \textbf{(1)}.
+
+  Vi beviser nu \textbf{(2)}, men dog kun den ene vej da fremgangsmåden er den samme.
+
+  Vælg $u \in V$, med andre ord
+  $$\exists \ w \in E \quad : \quad w \in g(u)$$
+  fra \eqref{kors} ser vi at
+  $$g(f(w)) = w = g(u)$$
+  og derfor må $f(w) = u$, hvis vi nu anvender $f$ på det ovenstående får vi
+  $$f(g(u)) = u$$
+
+  Vi beviser nu \textbf{(3)}
+
+  Vi ved at $w  = g(f(w))$ resultatet fås ved at differentiere denne ligning
+  \begin{align*}
+    [D_ww] &= [D_w = g(f(w))] \\
+    [I_m] &= [Dg(f(w))][Df(w)] \\
+    [Dg(f(w))]^{-1} &= [Df(w)]
+  \end{align*}
+  hvilket konkluderer beviset.
+\end{proof}
