@@ -1,1 +1,89 @@
 % !TEX root = ../main.tex
+\begin{boks}{Definition 5.1}
+  \begin{itemize}[label = $\ast$]
+    \item $(X, d)$ metrisk rum
+    \item $F \ : \ X \rightarrow X$ kaldes en kontraktion hvis $\exists \ \alpha \in [0,1)$ så
+    $$d(F(x), F(y)) \leq \alpha d(x,y), \quad \forall x,y \in X$$
+    \item Et punkt kaldes et fikspunkt for $F$ hvis $F(x) = x$
+  \end{itemize}
+\end{boks}
+\begin{boks}{Sætning 5.2}
+  $(X,d)$ fuldstændigt metrisk rum, $F \ : \ X \rightarrow X$ kontraktion så har $F$ et unikt fiksprunkt.
+\end{boks}
+\begin{proof}
+  \textbf{Først viser vi unikhed}
+
+  Antag $a,b \in X$ så $F(a) = a$ og $F(b) = b$.
+  $$d(a,b) = d(F(a), F(b)) \leq \alpha d(a,b)$$
+  $$d(a,b) \leq \alpha d(a,b)$$
+  $$1 \leq \alpha$$
+  hvilket er en modstrid. Derfor kan det konkluderes at hvis der findes et fikspunkt, så er det unikt.
+
+  \textbf{Nu konstruerer vi et fikspunkt}
+
+  Betragt følgen $ \{ y_n \}_{n \geq 1} \subset X$, hvor $y_1$ er vilkårlig og
+  $$y_n \ := \ F(y_{n - 1}), \quad n \geq 2$$
+  Betragt tilfældet hvor $y_2 = F(y_1) = y_1$, det vil betyde $y_1$ er vores fikspunkt og vi er færdige.
+
+  Vi kan derfor antage at $d(y_2, y_1) > 0$.
+
+  Vi viser to ting
+  \begin{enumerate}[label = (\arabic*)]
+    \item Følgen er Cauchy i $X$, derfor konvergerer den til $y \in X$
+    \item $y$ er fikspunkt for $F$
+  \end{enumerate}
+  Vi starter med (1)
+
+  For ethvert $\varepsilon > 0$ vil vi finde $N(\varepsilon) > 0$ så $ p \geq q \geq N(\varepsilon)$ medfører $d(y_p, y_q) < \varepsilon$.
+  Med andre ord
+  \begin{align}\label{kors_banach}
+    d(y_q, y_{q + k}) < \varepsilon, \quad \forall k \geq 0, \ \forall q \geq N(\varepsilon)
+  \end{align}
+  Hvis $k \geq 0$ følger af trekantsuligheden at
+  \begin{align}
+    d(y_q, y_{q + k}) &\leq d(y_q,, y_{q + 1}) + d(y_{q + 1}, y_{q + k})\nonumber\\
+    &\leq \sum_{i = 0}^{k - 1} d(y_{q + i}, y_{q + i + 1})\label{dobbelt_kors_banach}
+  \end{align}
+
+  For ethvert $n \leq 1$ har vi
+  \begin{align*}
+    d(y_n, y_{n + 1}) = d(F(y_{n - 1}), F(y_n)) \leq \alpha d(y_{n - 1}, y_n)
+    \leq \ldots \leq \alpha^{n - 1} d(y_1, y_2), \quad \forall n \geq 1
+  \end{align*}
+  Det vil sige
+  \begin{align*}
+    d(y_{q + i}, y_{q + i - 1}) \leq \alpha^{q + i - 1} d(y_1, y_2), \quad \forall q \geq 1, \ i \geq 0
+  \end{align*}
+  Det ovenstående sammen med \eqref{dobbelt_kors_banach} medfører at
+  \begin{align*}
+    d(y_q, y_{q + k}) \leq \alpha^{q - 1} d(y_1, y_2) (1 + \ldots + \alpha^{k - 1}) \leq \frac{\alpha^{q - 1}}{1 - \alpha} d(y_1, y_2)
+  \end{align*}
+  Da $\alpha < 1$ følger det at $\lim \alpha^q = 0$.
+
+  Vi vil gerne opfylde \eqref{kors_banach}
+  \begin{align*}
+    \frac{\alpha^{q - 1}}{1 - \alpha}d(y_1, y_2) &< \varepsilon \\
+    \alpha^{q} &< \varepsilon \frac{\alpha(1 - \alpha)}{d(y_1, y_2)}
+  \end{align*}
+  vælg $N(\varepsilon)$ så det ovenstående er opfyldt.
+
+  Det vil sige at $$ \lim_{n \rightarrow \infty} d(y_n, y_{infty}) = 0 $$
+
+  \textbf{Vi viser nu (2)}
+
+  For $n \geq 1$:
+  \begin{align*}
+    d(F(y), y) \leq d(F(y), F(y_n)) + d(F(y_n), y)
+  \end{align*}
+  men
+  \begin{align*}
+    d(F(y), F(y_n)) \leq \alpha d(y, y_n) \rightarrow 0
+  \end{align*}
+  og
+  \begin{align*}
+    d(F(y_n), y) = d(y_{n + 1}, y) \rightarrow 0
+  \end{align*}
+  afstanden mellem to punkter er nul hvis og kun hvis de to punkter er ens! Dermed konkluderer vi at
+  $$ F(y) = y$$
+  hvilket afslutter beviset.
+\end{proof}
