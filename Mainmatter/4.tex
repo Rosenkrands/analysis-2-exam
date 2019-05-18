@@ -1,1 +1,37 @@
 % !TEX root = ../main.tex
+\subsection{Lemma 7.2}
+\begin{boks}{Lemma 7.2}
+  \begin{itemize}[label = $\ast$]
+    \item Lad $\mathcal{O} \ \dot{\subset} \ \mathbb{R}^d$, $K \subset \mathcal{O}$ hvor $K$ er konveks og kompakt
+    \item $\varphi \in C^1(\mathcal{O})$, dvs. at de partielt afledte eksisterer og er kontinuerte.
+    \item Definér
+    $$ \| \partial_j \varphi \|_\infty \ := \ \sup_{x \in \mathcal{O}} | \partial_j \varphi(x) | < \infty$$
+  \end{itemize}
+  Så er $\varphi$ lipschitz-kontinuert på $K$, dvs.
+  $$ | \varphi(x) - \varphi(x') | \leq L \| x - x' \|, \quad \forall x,x' \in K$$
+  hvor
+  $$ L \ := \ \sqrt{\sum_{j = 1}^d \| \partial_j \varphi} \|^2_\infty $$
+\end{boks}
+At $K$ er en konveks mængde betyder at
+$$ (1 - t)x' + tx \in K, \quad \forall x,x' \in K, \ \forall t \in [0,1] $$
+\begin{proof}
+  Lad $x,x' \in K$.
+  Definér $f \ : \ [0,1] \rightarrow \mathbb{R}$ som
+  $$ f(t) = \varphi\Big( (1 - t)x' + tx \Big), \quad 0 \leq t \leq 1 $$
+  Vi ved $\varphi \in C^1(\mathcal{O})$, så da $K \subset \mathcal{O}$ og konveks er $f$ differentiabel og kædereglen fortæller os at
+  $$ f'(t) = \langle \nabla \varphi\big( (1 - t)x' + tx \big), x - x' \rangle $$
+  Nu kigger på vi venstre siden af den ulighed vi gerne vil vise
+  \begin{align*}
+    | \varphi(x) - \varphi(x') | =
+    | f(1) - f(0) | =
+    \left| \int_0^1 f'(t) \right| \leq
+    \int_0^1 |f'(t)| dt
+  \end{align*}
+  vi kan nu indsætte det kendte udtryk for $f'(t)$
+  \begin{align*}
+    \int_0^1 | \langle \nabla \varphi\big( (1 - t)x' + tx \big), x - x' \rangle| dt &\leq \int_0^1 \| \nabla \varphi \big( (1 - t)x' + tx \big) \| \cdot \| x - x' \| dt \\
+    &= \int_0^1 \sqrt{\sum_{j = 1}^d | \partial_j \varphi\big( (1 - t)x' + tx \big) |^2 } \cdot \| x - x' \| dt \\
+    &\leq \int_0^1 \sqrt{\sum_{j = 1}^d \| \partial_j \varphi \|^2 } \cdot \| x - x' \| dt \\
+    &= L \| x - x' \| \int_0^1 1 dt
+  \end{align*}
+\end{proof}
