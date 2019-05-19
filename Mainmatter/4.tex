@@ -35,3 +35,53 @@ $$ (1 - t)x' + tx \in K, \quad \forall x,x' \in K, \ \forall t \in [0,1] $$
     &= L \| x - x' \| \int_0^1 1 dt
   \end{align*}
 \end{proof}
+
+\textbf{Nu vil den tredje del af beviset for Sætningen om implicit givne funktioner blive gennemgået}
+
+\begin{proof}
+  Lad $w, w' \in P_n\left(\frac{\varepsilon}{2C}\right)$. Vi ved at $f(w), f(w') \in \overline{Q_m(\varepsilon)}$.
+
+  Sæt
+  \begin{align*}
+  x = [f(w), w], \
+  x' = [f(w'), w']
+  \in \overline{Q_m(\varepsilon)} \times  P_n\left(\frac{\varepsilon}{2C}\right)
+  \end{align*}
+  Vi ved at $h$ er differentiabel i $x'$ dvs.
+  \begin{align}\label{imp_kors}
+    h(x) = h(x') + [Dh(x')](x - x') + \varphi_{x'}(x - x')\|x - x'\|
+  \end{align}
+  Betragt funktionen $$ x \mapsto \det[D_uh(x)] $$
+  $[D_uh(a)]$ er antaget invertibel derfor må $\det[D_uh(a)] \neq 0$.
+  $h$ er desuden kontinuert differentiabel hvilket mefører at
+  $$ \exists \ r > 0 \ \forall x \in B_r(a) \ : \ \det[D_uh(x)] \neq 0. $$
+  Der kan derfor vælges $\varepsilon \leq r$ så $[D_uh(x)]$ er defineret for $x \in E = B_\varepsilon (a)$
+
+  Vi kan nu omskrive \eqref{imp_kors} med vores $x = [f(w), w]$ og $x' = [f(w'), w']$, samt opdelingen af Jacobi matricen
+  $$[Dh(x)] = \Big[ [D_uh(x)], [D_wh(x)] \Big] $$
+
+  \begin{align*}
+    h([f(w), w]) &= h([f(w'), w']) +
+     \Big[ [D_uh([f(w'), w'])], [D_wh([f(w'), w'])] \Big]([f(w), w] - [f(w'), w']) + \\
+     &\qquad\varphi_{x'}([f(w), w] - [f(w'), w']) \| [f(w), w] - [f(w'), w'] \| \\
+    &= h([f(w'), w']) +
+    [D_uh([f(w'), w'])](f(w) - f(w')) +
+    [D_wh(f(w'), w'])](w - w') +  \\
+    &\qquad\varphi_{x'}\Big( [f(w) - f(w')], [w - w'] \Big) \| [f(w) - f(w')], [w - w'] \|
+  \end{align*}
+  Husk at $h(f(w), w) = h(f(w'), w') = 0$, og at $\det[D_uh(f(w'), w')] \neq 0 \ \forall w \in P_n\left( \frac{\varepsilon}{2C} \right)$
+  Dermed fås det følgende ved at gange med den inverse og indse at nogle af ledene er nul
+  \begin{align*}
+    f(w) - f(w') &= -[D_uh(f(w'), w')]^{-1}[D_wh(f(w'), w')](w - w') -[D_uh(f(w'), w')]^{-1} \varphi_{x'}(\ldots)\| \ldots \|
+  \end{align*}
+  Det er nok at vise at $$ f(w) - f(w') = L(w - w') + \varphi(w - w') \| w - w'\| $$ for $L$ lineær og $\varphi$ en lille-o funktion.
+  Vi ser straks at matrix-vektor produktet er en lineær afbildning.
+  Nu mangler vi blot at vise o-funktionen, bemærk at
+  \begin{align*}
+    \|[f(w) - f(w'), w - w'] \|
+  \end{align*}
+  er begrænset.
+
+  Vi har altså nogle konstanter og en lille-o funktion.
+  $f$ er derfor differentiabel i $w'$ og dermed på $P_n\left( \frac{\varepsilon}{2C} \right)$.
+\end{proof}
