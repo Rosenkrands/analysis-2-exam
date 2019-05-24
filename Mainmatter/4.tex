@@ -36,6 +36,19 @@ $$ (1 - t)x' + tx \in K, \quad \forall x,x' \in K, \ \forall t \in [0,1] $$
   \end{align*}
 \end{proof}
 
+\begin{boks}{Sætningen om implicit givne funktioner}
+  \begin{itemize}[label = $\ast$]
+    \item $U \ \dot{\subseteq} \ \mathbb{R}^{d = m + n}$
+    \item $h \in C^1(U, \mathbb{R}^m)$
+    \item Antag at der eksisterer et punkt $a = [u_a, w_a]$ så $h(a) = 0$
+    \item og at $[D_u h(a)]$ er invertibel
+  \end{itemize}
+
+  Så findes $f \ : \ E \ \dot{subseteq} \in \mathbb{R}^n \rightarrow \mathbb{R}^m$ så $f(w_a) = u_a$, $h([f(w), w]) = 0 \ \forall w \in E$.
+
+  Og $f \in C^1(E, \mathbb{R}^m)$ med $[Df(w)] = -[D_u h([f(w), w])]^{-1}[D_w h([f(w), w])], \forall w \in E$ hvor $[D_u h([f(w), w])]$ er invetibel.
+\end{boks}
+
 \textbf{Nu vil den tredje del af beviset for Sætningen om implicit givne funktioner blive gennemgået}
 
 \begin{proof}
