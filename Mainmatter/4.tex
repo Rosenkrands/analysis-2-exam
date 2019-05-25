@@ -1,42 +1,42 @@
 % !TEX root = ../main.tex
-\subsection{Lemma 7.2}
-\begin{boks}{Lemma 7.2}
-  \begin{itemize}[label = $\ast$]
-    \item Lad $\mathcal{O} \ \dot{\subset} \ \mathbb{R}^d$, $K \subset \mathcal{O}$ hvor $K$ er konveks og kompakt
-    \item $\varphi \in C^1(\mathcal{O})$, dvs. at de partielt afledte eksisterer og er kontinuerte.
-    \item Definér
-    $$ \| \partial_j \varphi \|_\infty \ := \ \sup_{x \in \mathcal{O}} | \partial_j \varphi(x) | < \infty$$
-  \end{itemize}
-  Så er $\varphi$ lipschitz-kontinuert på $K$, dvs.
-  $$ | \varphi(x) - \varphi(x') | \leq L \| x - x' \|, \quad \forall x,x' \in K$$
-  hvor
-  $$ L \ := \ \sqrt{\sum_{j = 1}^d \| \partial_j \varphi} \|^2_\infty $$
-\end{boks}
-At $K$ er en konveks mængde betyder at
-$$ (1 - t)x' + tx \in K, \quad \forall x,x' \in K, \ \forall t \in [0,1] $$
-\begin{proof}
-  Lad $x,x' \in K$.
-  Definér $f \ : \ [0,1] \rightarrow \mathbb{R}$ som
-  $$ f(t) = \varphi\Big( (1 - t)x' + tx \Big), \quad 0 \leq t \leq 1 $$
-  Vi ved $\varphi \in C^1(\mathcal{O})$, så da $K \subset \mathcal{O}$ og konveks er $f$ differentiabel og kædereglen fortæller os at
-  $$ f'(t) = \langle \nabla \varphi\big( (1 - t)x' + tx \big), x - x' \rangle $$
-  Nu kigger på vi venstre siden af den ulighed vi gerne vil vise
-  \begin{align*}
-    | \varphi(x) - \varphi(x') | =
-    | f(1) - f(0) | =
-    \left| \int_0^1 f'(t) \right| \leq
-    \int_0^1 |f'(t)| dt
-  \end{align*}
-  vi kan nu indsætte det kendte udtryk for $f'(t)$
-  \begin{align*}
-    \int_0^1 | \langle \nabla \varphi\big( (1 - t)x' + tx \big), x - x' \rangle| dt &\leq \int_0^1 \| \nabla \varphi \big( (1 - t)x' + tx \big) \| \cdot \| x - x' \| dt \\
-    &= \int_0^1 \sqrt{\sum_{j = 1}^d | \partial_j \varphi\big( (1 - t)x' + tx \big) |^2 } \cdot \| x - x' \| dt \\
-    &\leq \int_0^1 \sqrt{\sum_{j = 1}^d \| \partial_j \varphi \|^2 } \cdot \| x - x' \| dt \\
-    &= L \| x - x' \| \int_0^1 1 dt
-  \end{align*}
-\end{proof}
+% \subsection{Lemma 7.2}
+% \begin{boks}{Lemma 7.2}
+%   \begin{itemize}[label = $\ast$]
+%     \item Lad $\mathcal{O} \ \dot{\subset} \ \mathbb{R}^d$, $K \subset \mathcal{O}$ hvor $K$ er konveks og kompakt
+%     \item $\varphi \in C^1(\mathcal{O})$, dvs. at de partielt afledte eksisterer og er kontinuerte.
+%     \item Definér
+%     $$ \| \partial_j \varphi \|_\infty \ := \ \sup_{x \in \mathcal{O}} | \partial_j \varphi(x) | < \infty$$
+%   \end{itemize}
+%   Så er $\varphi$ lipschitz-kontinuert på $K$, dvs.
+%   $$ | \varphi(x) - \varphi(x') | \leq L \| x - x' \|, \quad \forall x,x' \in K$$
+%   hvor
+%   $$ L \ := \ \sqrt{\sum_{j = 1}^d \| \partial_j \varphi} \|^2_\infty $$
+% \end{boks}
+% At $K$ er en konveks mængde betyder at
+% $$ (1 - t)x' + tx \in K, \quad \forall x,x' \in K, \ \forall t \in [0,1] $$
+% \begin{proof}
+%   Lad $x,x' \in K$.
+%   Definér $f \ : \ [0,1] \rightarrow \mathbb{R}$ som
+%   $$ f(t) = \varphi\Big( (1 - t)x' + tx \Big), \quad 0 \leq t \leq 1 $$
+%   Vi ved $\varphi \in C^1(\mathcal{O})$, så da $K \subset \mathcal{O}$ og konveks er $f$ differentiabel og kædereglen fortæller os at
+%   $$ f'(t) = \langle \nabla \varphi\big( (1 - t)x' + tx \big), x - x' \rangle $$
+%   Nu kigger på vi venstre siden af den ulighed vi gerne vil vise
+%   \begin{align*}
+%     | \varphi(x) - \varphi(x') | =
+%     | f(1) - f(0) | =
+%     \left| \int_0^1 f'(t) \right| \leq
+%     \int_0^1 |f'(t)| dt
+%   \end{align*}
+%   vi kan nu indsætte det kendte udtryk for $f'(t)$
+%   \begin{align*}
+%     \int_0^1 | \langle \nabla \varphi\big( (1 - t)x' + tx \big), x - x' \rangle| dt &\leq \int_0^1 \| \nabla \varphi \big( (1 - t)x' + tx \big) \| \cdot \| x - x' \| dt \\
+%     &= \int_0^1 \sqrt{\sum_{j = 1}^d | \partial_j \varphi\big( (1 - t)x' + tx \big) |^2 } \cdot \| x - x' \| dt \\
+%     &\leq \int_0^1 \sqrt{\sum_{j = 1}^d \| \partial_j \varphi \|^2 } \cdot \| x - x' \| dt \\
+%     &= L \| x - x' \| \int_0^1 1 dt
+%   \end{align*}
+% \end{proof}
 
-\begin{boks}{Sætningen om implicit givne funktioner}
+\begin{boks}{Sætning 7.4}
   \begin{itemize}[label = $\ast$]
     \item $U \ \dot{\subseteq} \ \mathbb{R}^{d = m + n}$
     \item $h \in C^1(U, \mathbb{R}^m)$
@@ -44,57 +44,154 @@ $$ (1 - t)x' + tx \in K, \quad \forall x,x' \in K, \ \forall t \in [0,1] $$
     \item og at $[D_u h(a)]$ er invertibel
   \end{itemize}
 
-  Så findes $f \ : \ E \ \dot{subseteq} \in \mathbb{R}^n \rightarrow \mathbb{R}^m$ så $f(w_a) = u_a$, $h([f(w), w]) = 0 \ \forall w \in E$.
-
-  Og $f \in C^1(E, \mathbb{R}^m)$ med $[Df(w)] = -[D_u h([f(w), w])]^{-1}[D_w h([f(w), w])], \forall w \in E$ hvor $[D_u h([f(w), w])]$ er invetibel.
+  Så findes $f \ : \ E \ \dot{\subseteq} \in \mathbb{R}^n \rightarrow \mathbb{R}^m$ så $f(w_a) = u_a$, $h([f(w), w]) = 0 \ \forall w \in E$.
+  % 
+  % Og $f \in C^1(E, \mathbb{R}^m)$ med $[Df(w)] = -[D_u h([f(w), w])]^{-1}[D_w h([f(w), w])], \forall w \in E$ hvor $[D_u h([f(w), w])]$ er invertibel.
 \end{boks}
 
-\textbf{Nu vil den tredje del af beviset for Sætningen om implicit givne funktioner blive gennemgået}
-
 \begin{proof}
-  Lad $w, w' \in P_n\left(\frac{\varepsilon}{2C}\right)$. Vi ved at $f(w), f(w') \in \overline{Q_m(\varepsilon)}$.
-
-  Sæt
+  For ethvert $w \in P_n(\varepsilon)$, definer da funktionen $F_w \ : \ \overline{Q_m(\varepsilon)} \rightarrow \mathbb{R}^m$, givet ved
   \begin{align*}
-  x = [f(w), w], \
-  x' = [f(w'), w']
-  \in \overline{Q_m(\varepsilon)} \times  P_n\left(\frac{\varepsilon}{2C}\right)
+    F_w(u) \ := \ u - [D_u h(a)]^{-1} h([u,w])
   \end{align*}
-  Vi ved at $h$ er differentiabel i $x'$ dvs.
-  \begin{align}\label{imp_kors}
-    h(x) = h(x') + [Dh(x')](x - x') + \varphi_{x'}(x - x')\|x - x'\|
+  Da skal der fines et $C > 0$ og et $\varepsilon < \frac{r}{\sqrt{2}}$, sådan at der for ethvert $\varepsilon \leq \varepsilon_1$ og for alle $\|w - w_a\| < \frac{\varepsilon}{2C}$ gælder følgende
+  \begin{enumerate}[label = \arabic*.]
+    \item $F_w\bigg( \overline{Q_m(\varepsilon)} \bigg) \subseteq \overline{Q_m(\varepsilon)}$
+    \item $F_w : \overline{Q_m(\varepsilon)} \rightarrow \overline{Q_m(\varepsilon)}$ er en kontraktion.
+  \end{enumerate}
+
+  Jeg starter med at vise at funktionen $F_w$ er en kontraktion.
+
+  Det vil med andre ord sige at der eksisterer et $0 < \varepsilon_1 < \frac{r}{\sqrt{2}}$ småt nok til, at der for ethvert $\varepsilon \leq \varepsilon_1$ og $w \in P_n(\varepsilon)$ gælder
+  \begin{align}\label{enkelt}
+    \| F_w(u) - F_w(u') \| \leq \frac{1}{2} \| u - u' \|, \quad \forall u,u' \in \overline{Q_m(\varepsilon)}
   \end{align}
-  Betragt funktionen $$ x \mapsto \det[D_uh(x)] $$
-  $[D_uh(a)]$ er antaget invertibel derfor må $\det[D_uh(a)] \neq 0$.
-  $h$ er desuden kontinuert differentiabel hvilket mefører at
-  $$ \exists \ r > 0 \ \forall x \in B_r(a) \ : \ \det[D_uh(x)] \neq 0. $$
-  Der kan derfor vælges $\varepsilon \leq r$ så $[D_uh(x)]$ er defineret for $x \in E = B_\varepsilon (a)$
-
-  Vi kan nu omskrive \eqref{imp_kors} med vores $x = [f(w), w]$ og $x' = [f(w'), w']$, samt opdelingen af Jacobi matricen
-  $$[Dh(x)] = \Big[ [D_uh(x)], [D_wh(x)] \Big] $$
-
+  Vi kan omskrive $F_w$ til
   \begin{align*}
-    h([f(w), w]) &= h([f(w'), w']) +
-     \Big[ [D_uh([f(w'), w'])], [D_wh([f(w'), w'])] \Big]([f(w), w] - [f(w'), w']) + \\
-     &\qquad\varphi_{x'}([f(w), w] - [f(w'), w']) \| [f(w), w] - [f(w'), w'] \| \\
-    &= h([f(w'), w']) +
-    [D_uh([f(w'), w'])](f(w) - f(w')) +
-    [D_wh(f(w'), w'])](w - w') +  \\
-    &\qquad\varphi_{x'}\Big( [f(w) - f(w')], [w - w'] \Big) \| [f(w) - f(w')], [w - w'] \|
+    F_w(u) = -[D_uh(a)]^{-1}(h([u,w]) - [D_uh(a)]u)
   \end{align*}
-  Husk at $h(f(w), w) = h(f(w'), w') = 0$, og at $\det[D_uh(f(w'), w')] \neq 0 \ \forall w \in P_n\left( \frac{\varepsilon}{2C} \right)$
-  Dermed fås det følgende ved at gange med den inverse og indse at nogle af ledene er nul
+  Definer nu
   \begin{align*}
-    f(w) - f(w') &= -[D_uh(f(w'), w')]^{-1}[D_wh(f(w'), w')](w - w') -[D_uh(f(w'), w')]^{-1} \varphi_{x'}(\ldots)\| \ldots \|
+    g_w(u) = h([u,w]) - [D_uh(a)]u
   \end{align*}
-  Det er nok at vise at $$ f(w) - f(w') = L(w - w') + \varphi(w - w') \| w - w'\| $$ for $L$ lineær og $\varphi$ en lille-o funktion.
-  Vi ser straks at matrix-vektor produktet er en lineær afbildning.
-  Nu mangler vi blot at vise o-funktionen, bemærk at
+  dvs.
   \begin{align*}
-    \|[f(w) - f(w'), w - w'] \|
+    F_w(u) = -[D_uh(a)]^{-1}g_w(u)
   \end{align*}
-  er begrænset.
+  iflg. Lemma 7.1
+  \begin{align*}
+    \| F_w(u) - F_w(u') \| \leq \|[D_uh(a)]^{-1} \|_{HS} \| g_w(u) - g_w(u') \|
+  \end{align*}
 
-  Vi har altså nogle konstanter og en lille-o funktion.
-  $f$ er derfor differentiabel i $w'$ og dermed på $P_n\left( \frac{\varepsilon}{2C} \right)$.
+  Fordi $\overline{Q_w(\varepsilon)}$ er kompakt og konveks kan vi bruge Lemma 7.3 til at vise det følgende
+  \begin{align*}
+    \| g_w(u) - g_w(u') \| \leq \| \Delta g_w \|_{\infty, \overline{Q_w(\varepsilon)}} \| u - u' \|, \quad \forall u, u' \in \overline{Q_w(\varepsilon)}, \ w \in P_n(\varepsilon)
+  \end{align*}
+  Da $g_w$'s partielt afledte er kontinuerte, eksisterer der et $\varepsilon_1 > 0$ så
+  \begin{align*}
+    \| \Delta g_w \|_{\infty, \overline{Q_w(\varepsilon_1)}} \leq \frac{1}{2\| [D_uh(a)]^{-1} \|_{HS}}, \quad \forall w \in P_n(\varepsilon_1)
+  \end{align*}
+  indsæt i \eqref{enkelt} og indse
+  \begin{align}\label{tredobbelt}
+    \| F_w(u) - F_w(u') \| \leq \frac{1}{2} \| u - u' \|
+  \end{align}
+  Vi kan altså konkludere at $F_w$ opfylder kontraktionsuligheden.
+
+  Nu viser vi at $\overline{Q_w(\varepsilon)}$ er invariant under $F_w$.
+  Med andre ord $F_w : \overline{Q_w(\varepsilon_1)} \rightarrow \overline{Q_w(\varepsilon_1)}$ for $w \in P_n(\frac{\varepsilon}{2C})$, C konstant og $\varepsilon$ tilpas lille. Ifølge Lemma 7.1 er
+  \begin{align} \label{dobbelt}
+    \| F_w(u) - F_{w'}(u) \| \leq \| [D_uh(a)]^{-1} \|_{HS}
+    \| h([u,w]) - h([u,w']) \|, \quad \forall u \in \overline{Q_w(\varepsilon)} \ \text{og} \ w,w' \in \mathbb{R}^m
+  \end{align}
+  Vi vil nu vurdere det sidste udtryk ovenfor, til dette benyttes Lemma 7.3, benytter mængden $\Omega = \overline{Q_w(\varepsilon)} \times \overline{P_n(\varepsilon_1)}$ som er kompakt og konveks.
+  Vi får uligheden
+  \begin{align*}
+      \| h([u,w]) - h([u,w']) \| \leq L \| [u,w] - [u,w'] \|
+  \end{align*}
+  Vi indsætter i \eqref{dobbelt}
+  \begin{align*}
+    \| F_w(u) - F_{w'}(u) \| &\leq \| [D_uh(a)]^{-1} \|_{HS} L\| [u,w] - [u,w'] \| \\
+    &\leq \| [D_uh(a)]^{-1} \|_{HS} L\| w - w' \|, \quad \forall u \in \overline{Q_w(\varepsilon)} \ \text{og} \ w,w' \in \overline{P_n(\varepsilon_1)}
+  \end{align*}
+  Definer nu $C := \| [D_uh(a)]^{-1} \|_{HS}L$
+  \begin{align*}
+    \| F_w(u) - F_{w'}(u) \| \leq C\| w - w' \|, \quad \forall w,w' \in P_n(\varepsilon_1), \ \forall u \in \overline{Q_w(\varepsilon_1)}
+  \end{align*}
+  Vi viser nu $F_w(u) \in \overline{Q_w(\varepsilon)}$
+  \begin{align*}
+    \| F_w(u) - u_a \| = \| F_w(u) - F_{w_a}(u_a) \|
+    &\leq \| F_w(u) - F_w(u_a) \| + \| F_w(u_a) - F_{w_a}(u_a) \| \\
+    &\leq \frac{1}{2} \| u - u_a \| + C \| w - w_a \| \\
+    &< \frac{\varepsilon}{2} + C\frac{\varepsilon}{2C} = \varepsilon
+   \end{align*}
+   Dermed er $F_w \in \overline{Q_m(\varepsilon)}$, og dermed er $F_w$ en kontraktion.
+
+   $(\overline{Q_m(\varepsilon)}, d_{\mathbb{R}^m})$ opfylder kriterierne for et fuldstændigt metrisk rum. Dermed vil alle Cauchy følger i $\overline{Q_m(\varepsilon)}$ konvergerer med grænse i $\overline{Q_m(\varepsilon)}$, som følge af følge karakterisation af lukkede mængder.
+
+   Derfor kan vi nu tillade os at kalde $\overline{Q_m(\varepsilon)}$ for et Banach rum og derfor eksisterer et entydigt fikspunkt $u_w$ for $F_w$
+   $$F(u_w) = u_w$$
+   Vi ser at
+   $$F(u_w) = u_w - [D_uh(a)]^{-1}h(u_w, w) = u_w$$
+   dermed må
+   $$[D_uh(a)]^{-1}h(u_w, w) = 0 $$
+   $$h(u_w, w) = 0$$
+   Vi definerer $f:P_n(\frac{\varepsilon_1}{2C}) \rightarrow \mathbb{R}^m$
+   $$f(w) = u_w$$
+   Vi har altså at
+   \begin{align*}
+     f(w_a) = F_{w_a}(u_a) &= u_a - [D_uh(a)]^{-1}h(w_a, u_a)\\
+     &= u_a - 0 \\
+     &= u_a
+   \end{align*}
+   hvor $E := P_n(\frac{\varepsilon_1}{2C})$.
 \end{proof}
+
+% \textbf{Nu vil den tredje del af beviset for Sætningen om implicit givne funktioner blive gennemgået}
+%
+% \begin{proof}
+%   Lad $w, w' \in P_n\left(\frac{\varepsilon}{2C}\right)$. Vi ved at $f(w), f(w') \in \overline{Q_m(\varepsilon)}$.
+%
+%   Sæt
+%   \begin{align*}
+%   x = [f(w), w], \
+%   x' = [f(w'), w']
+%   \in \overline{Q_m(\varepsilon)} \times  P_n\left(\frac{\varepsilon}{2C}\right)
+%   \end{align*}
+%   Vi ved at $h$ er differentiabel i $x'$ dvs.
+%   \begin{align}\label{imp_kors}
+%     h(x) = h(x') + [Dh(x')](x - x') + \varphi_{x'}(x - x')\|x - x'\|
+%   \end{align}
+%   Betragt funktionen $$ x \mapsto \det[D_uh(x)] $$
+%   $[D_uh(a)]$ er antaget invertibel derfor må $\det[D_uh(a)] \neq 0$.
+%   $h$ er desuden kontinuert differentiabel hvilket mefører at
+%   $$ \exists \ r > 0 \ \forall x \in B_r(a) \ : \ \det[D_uh(x)] \neq 0. $$
+%   Der kan derfor vælges $\varepsilon \leq r$ så $[D_uh(x)]$ er defineret for $x \in E = B_\varepsilon (a)$
+%
+%   Vi kan nu omskrive \eqref{imp_kors} med vores $x = [f(w), w]$ og $x' = [f(w'), w']$, samt opdelingen af Jacobi matricen
+%   $$[Dh(x)] = \Big[ [D_uh(x)], [D_wh(x)] \Big] $$
+%
+%   \begin{align*}
+%     h([f(w), w]) &= h([f(w'), w']) +
+%      \Big[ [D_uh([f(w'), w'])], [D_wh([f(w'), w'])] \Big]([f(w), w] - [f(w'), w']) + \\
+%      &\qquad\varphi_{x'}([f(w), w] - [f(w'), w']) \| [f(w), w] - [f(w'), w'] \| \\
+%     &= h([f(w'), w']) +
+%     [D_uh([f(w'), w'])](f(w) - f(w')) +
+%     [D_wh(f(w'), w'])](w - w') +  \\
+%     &\qquad\varphi_{x'}\Big( [f(w) - f(w')], [w - w'] \Big) \| [f(w) - f(w')], [w - w'] \|
+%   \end{align*}
+%   Husk at $h(f(w), w) = h(f(w'), w') = 0$, og at $\det[D_uh(f(w'), w')] \neq 0 \ \forall w \in P_n\left( \frac{\varepsilon}{2C} \right)$
+%   Dermed fås det følgende ved at gange med den inverse og indse at nogle af ledene er nul
+%   \begin{align*}
+%     f(w) - f(w') &= -[D_uh(f(w'), w')]^{-1}[D_wh(f(w'), w')](w - w') -[D_uh(f(w'), w')]^{-1} \varphi_{x'}(\ldots)\| \ldots \|
+%   \end{align*}
+%   Det er nok at vise at $$ f(w) - f(w') = L(w - w') + \varphi(w - w') \| w - w'\| $$ for $L$ lineær og $\varphi$ en lille-o funktion.
+%   Vi ser straks at matrix-vektor produktet er en lineær afbildning.
+%   Nu mangler vi blot at vise o-funktionen, bemærk at
+%   \begin{align*}
+%     \|[f(w) - f(w'), w - w'] \|
+%   \end{align*}
+%   er begrænset.
+%
+%   Vi har altså nogle konstanter og en lille-o funktion.
+%   $f$ er derfor differentiabel i $w'$ og dermed på $P_n\left( \frac{\varepsilon}{2C} \right)$.
+% \end{proof}
